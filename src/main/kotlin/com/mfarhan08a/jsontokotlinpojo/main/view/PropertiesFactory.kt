@@ -11,8 +11,7 @@ internal class PropertiesFactory {
     fun createControls(): ControlsModel {
         val result = ControlsModel(
             sources = listOf(
-                Json(languages = createJsonLanguages()),
-                JsonSchema(languages = createJsonLanguages())
+                Json(languages = createJsonLanguages())
             )
         )
         result.selectedSource = result.sources.first()
@@ -26,95 +25,6 @@ internal class PropertiesFactory {
     }
 
     private fun createJsonLanguages() = listOf(
-        Java(
-            frameworks = listOf(
-                None(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                NoneJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                NoneLombok(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseLombokValue()
-                    )
-                ),
-                Gson(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                GsonJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                Jackson(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                JacksonJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                LoganSquare(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                LoganSquareJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                Moshi(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                MoshiJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                FastJson(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true),
-                        UseSetters(),
-                        UseGetters(selected = true),
-                        UseToString()
-                    )
-                ),
-                FastJsonJavaRecords(
-                    properties = listOf(
-                        UseJavaPrimitives(selected = true)
-                    )
-                ),
-                AutoValue()
-            )
-        ),
         Kotlin(
             frameworks = listOf(
                 None(

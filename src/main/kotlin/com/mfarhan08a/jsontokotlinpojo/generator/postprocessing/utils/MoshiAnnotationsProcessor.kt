@@ -13,8 +13,8 @@ internal class MoshiAnnotationsProcessor(
     fun applyAnnotations(
         generationModel: GenerationModel,
         classItem: ClassItem
-    ) = with(ImportsTemplate.MOSHI()) {
-        with(KotlinAnnotations.MOSHI()) {
+    ) = with(ImportsTemplate.Moshi()) {
+        with(KotlinAnnotations.Moshi()) {
             generateHelper.setAnnotations(
                 classItem,
                 if (generationModel.useMoshiAdapter) {

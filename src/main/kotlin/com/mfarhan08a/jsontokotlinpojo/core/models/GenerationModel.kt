@@ -10,15 +10,10 @@ data class GenerationModel(
     val annotationEnum: FrameworkVW,
     val rootClassName: String,
     val content: String?,
-    val useSetters: Boolean,
-    val useGetters: Boolean,
-    val useStrings: Boolean,
     val useKotlinSingleDataClass: Boolean,
     val useKotlinParcelable: Boolean,
     val kotlinNullableFields: Boolean,
-    val javaPrimitives: Boolean,
     val useTabsIndentation: Boolean,
-    val useLombokValue: Boolean,
     val useMoshiAdapter: Boolean,
     val useKotlinDataClass: Boolean
 )
@@ -35,9 +30,4 @@ data class FieldModel(
     val fieldName: String? = null,
     val fieldNameFormatted: String? = null,
     val annotation: String? = null,
-    val visibility: Visibility = Visibility.NONE
 )
-
-enum class Visibility(val value: String) {
-    NONE(""), PRIVATE("private")
-}

@@ -14,10 +14,6 @@ import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.common.KotlinSingleF
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.InputDataParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonArrayParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonObjectParser
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.PostProcessorFactory
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.AutoValueClassPostProcessor
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.CommonJavaPostProcessor
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.JavaRecordsPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.utils.MoshiAnnotationsProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassGenerateHelper
@@ -25,7 +21,6 @@ import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ProcessingModelResolver
 import com.mfarhan08a.jsontokotlinpojo.main.controllers.JsonToKotlinPOJOActionController
 import com.mfarhan08a.jsontokotlinpojo.main.persistense.ViewStateService
-import com.mfarhan08a.jsontokotlinpojo.main.view.*
 import com.mfarhan08a.jsontokotlinpojo.main.view.GeneratorViewBinder
 import com.mfarhan08a.jsontokotlinpojo.main.view.GeneratorViewFactory
 import com.mfarhan08a.jsontokotlinpojo.main.view.PropertiesFactory
@@ -99,19 +94,11 @@ val appModule = module {
     }
 
     single {
-        JavaRecordsPostProcessor(get(), get())
-    }
-
-    single {
         FileWriter()
     }
 
     single {
         CommonFileWriterDelegate(get(), get(), get(), get())
-    }
-
-    single {
-        PostProcessorFactory(get(), get(), get(), get())
     }
 
     single {
@@ -122,16 +109,9 @@ val appModule = module {
         MoshiAnnotationsProcessor(get())
     }
 
-    single {
-        AutoValueClassPostProcessor(get(), get())
-    }
 
     single {
-        CommonJavaPostProcessor(get(), get())
-    }
-
-    single {
-        ClassTemplateHelper(get())
+        ClassTemplateHelper()
     }
 
     single {
@@ -154,5 +134,7 @@ val appModule = module {
         JsonArrayParser(get())
     }
 
-    single { ClassGenerateHelper() }
+    single {
+        ClassGenerateHelper()
+    }
 }

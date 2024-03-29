@@ -93,36 +93,36 @@ internal class KotlinDataClassPostProcessor(
         is Gson -> {
             generateHelper.setAnnotations(
                 classItem,
-                KotlinAnnotations.GSON.classAnnotation,
-                KotlinAnnotations.GSON.annotation,
-                ImportsTemplate.GSON.imports
+                KotlinAnnotations.Gson.classAnnotation,
+                KotlinAnnotations.Gson.annotation,
+                ImportsTemplate.Gson.imports
             )
         }
 
         is LoganSquare -> {
             generateHelper.setAnnotations(
                 classItem,
-                KotlinAnnotations.LOGAN_SQUARE.classAnnotation,
-                KotlinAnnotations.LOGAN_SQUARE.annotation,
-                ImportsTemplate.LOGAN_SQUARE.imports
+                KotlinAnnotations.LoganSquare.classAnnotation,
+                KotlinAnnotations.LoganSquare.annotation,
+                ImportsTemplate.LoganSquare.imports
             )
         }
 
         is Jackson -> {
             generateHelper.setAnnotations(
                 classItem,
-                KotlinAnnotations.JACKSON.classAnnotation,
-                KotlinAnnotations.JACKSON.annotation,
-                ImportsTemplate.JACKSON.imports
+                KotlinAnnotations.Jackson.classAnnotation,
+                KotlinAnnotations.Jackson.annotation,
+                ImportsTemplate.Jackson.imports
             )
         }
 
         is FastJson -> {
             generateHelper.setAnnotations(
                 classItem,
-                KotlinAnnotations.FAST_JSON.classAnnotation,
-                KotlinAnnotations.FAST_JSON.annotation,
-                ImportsTemplate.FAST_JSON.imports
+                KotlinAnnotations.FastJson.classAnnotation,
+                KotlinAnnotations.FastJson.annotation,
+                ImportsTemplate.FastJson.imports
             )
         }
 
@@ -131,9 +131,9 @@ internal class KotlinDataClassPostProcessor(
         is KotlinSerialization -> {
             generateHelper.setAnnotations(
                 classItem,
-                KotlinAnnotations.KOTLIN_SERIALIZATION.classAnnotation,
-                KotlinAnnotations.KOTLIN_SERIALIZATION.annotation,
-                ImportsTemplate.KOTLIN_SERIALIZATION.imports
+                KotlinAnnotations.KotlinSerialization.classAnnotation,
+                KotlinAnnotations.KotlinSerialization.annotation,
+                ImportsTemplate.KotlinSerialization.imports
             )
         }
 

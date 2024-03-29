@@ -2,83 +2,10 @@ package com.mfarhan08a.jsontokotlinpojo.generator.utils
 
 import com.mfarhan08a.jsontokotlinpojo.core.models.FieldModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.Visibility
-import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassEnum
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.templates.ClassTemplate
 
-internal class ClassTemplateHelper(
-    private val classGenerateHelper: ClassGenerateHelper
-) {
-
-    fun createSetter(field: String, type: String?) = String.format(
-        ClassTemplate.SETTER,
-        classGenerateHelper.upperCaseName(field),
-        type,
-        classGenerateHelper.lowerCaseFirst(field)
-    )
-
-    fun createGetter(field: String, type: String?) =
-        String.format(
-            if (ClassEnum.BOOLEAN.primitive.equals(type, ignoreCase = true))
-                ClassTemplate.GETTER_BOOLEAN else ClassTemplate.GETTER,
-            classGenerateHelper.upperCaseName(field),
-            classGenerateHelper.lowerCaseFirst(field),
-            type
-        )
-
-    fun createToString(classItem: ClassItem) =
-        String.format(
-            ClassTemplate.TO_STRING,
-            classItem.className,
-            generateToStingItem(classItem)
-        )
-
-    private fun generateToStingItem(classItem: ClassItem): String {
-        var isFirstField = true
-        val fieldToStringStatement = StringBuilder()
-        val fields = classItem.classFields.keys
-        for (field in fields) {
-            fieldToStringStatement.append(
-                String.format(
-                    ClassTemplate.TO_STRING_LINE,
-                    classGenerateHelper.lowerCaseFirst(field),
-                    classGenerateHelper.formatClassField(field),
-                    if (isFirstField) "" else ","
-                )
-            )
-            if (isFirstField) {
-                isFirstField = false
-            }
-        }
-        return fieldToStringStatement.toString()
-    }
-
-    fun createField(model: FieldModel): String {
-        val fieldDeclaration = if (model.visibility == Visibility.NONE) String.format(
-            ClassTemplate.FIELD,
-            model.classType,
-            model.fieldNameFormatted
-        ) else (
-                String.format(
-                    ClassTemplate.FIELD_WITH_VISIBILITY,
-                    model.visibility.value,
-                    model.classType,
-                    model.fieldNameFormatted
-                )
-                )
-        return createAnnotatedField(model.fieldName, model.annotation, fieldDeclaration)
-    }
-
-    fun createAutoValueField(model: FieldModel) =
-        createAnnotatedField(
-            model.fieldName, model.annotation,
-            String.format(
-                ClassTemplate.FIELD_AUTO_VALUE,
-                model.classType,
-                model.fieldNameFormatted
-            )
-        )
+internal class ClassTemplateHelper {
 
     fun createKotlinDataClassField(generationModel: GenerationModel, model: FieldModel) =
         if (generationModel.kotlinNullableFields) {
@@ -100,49 +27,6 @@ internal class ClassTemplateHelper(
                 )
             )
         }
-
-    fun createJavaRecordClassField(model: FieldModel) =
-        createAnnotatedField(
-            model.fieldName, model.annotation,
-            String.format(
-                ClassTemplate.FIELD_JAVA_RECORD,
-                model.classType,
-                model.fieldNameFormatted
-            )
-        )
-
-    fun createClassBody(classItem: ClassItem, classBody: String?) =
-        createClassBodyAnnotated(
-            classItem,
-            String.format(
-                ClassTemplate.CLASS_BODY,
-                classItem.className,
-                classBody
-            )
-        )
-
-    fun createTypeAdapter(classItem: ClassItem) =
-        String.format(ClassTemplate.TYPE_ADAPTER, classItem.className)
-
-    fun createClassBodyAbstract(classItem: ClassItem, classBody: String?) =
-        createClassBodyAnnotated(
-            classItem,
-            String.format(
-                ClassTemplate.CLASS_BODY_ABSTRACT,
-                classItem.className,
-                classBody
-            )
-        )
-
-    fun createClassBodyRecords(classItem: ClassItem, classBody: String?) =
-        createClassBodyAnnotated(
-            classItem,
-            String.format(
-                ClassTemplate.CLASS_BODY_RECORDS,
-                classItem.className,
-                classBody
-            )
-        )
 
     fun createClassBodyKotlinDataClass(
         classItem: ClassItem,
@@ -175,7 +59,7 @@ internal class ClassTemplateHelper(
         imports: String?,
         body: String?
     ) = if (packagePath?.isNotEmpty() == true) {
-        if (null != imports && imports.isNotEmpty()) {
+        if (!imports.isNullOrEmpty()) {
             String.format(
                 ClassTemplate.CLASS_ROOT_IMPORTS,
                 packagePath,
@@ -198,7 +82,7 @@ internal class ClassTemplateHelper(
         imports: String?,
         body: String?
     ) = if (packagePath?.isNotEmpty() == true) {
-        if (null != imports && imports.isNotEmpty()) {
+        if (!imports.isNullOrEmpty()) {
             String.format(
                 ClassTemplate.CLASS_ROOT_IMPORTS_WITHOUT_SEMICOLON,
                 packagePath,
@@ -233,7 +117,7 @@ internal class ClassTemplateHelper(
         name: String?,
         annotation: String?,
         field: String
-    ) = if (null != annotation && annotation.isNotEmpty()) {
+    ) = if (!annotation.isNullOrEmpty()) {
         String.format(
             ClassTemplate.FIELD_ANNOTATED,
             String.format(annotation, name),

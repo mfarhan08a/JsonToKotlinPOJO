@@ -40,7 +40,7 @@ class ClassGenerateHelper {
     }
 
     fun updateClassBody(classBody: String?): String? {
-        if (null != classBody && classBody.isNotEmpty()) {
+        if (!classBody.isNullOrEmpty()) {
             val lastIndex = classBody.length - 1
             if (classBody[lastIndex] == '\n') {
                 return classBody.substring(0, lastIndex)

@@ -20,7 +20,7 @@ internal class GeneratorViewBinder(
         properties = propertiesFactory.createControls()
         viewStateManager.restoreState(properties)
         viewStateManager.restoreCommonProperties(generatorVew)
-        bindSource(generatorVew)
+        resolveSource()
         bindLanguage(generatorVew)
         bindFrameworksAndProperties(generatorVew)
     }
@@ -57,34 +57,11 @@ internal class GeneratorViewBinder(
         }
     }
 
-    private fun bindSource(generatorVew: GeneratorView) {
-        with(generatorVew) {
-            JSONRadioButton.addItemListener { event ->
-                if (event.stateChange == ItemEvent.SELECTED) {
-                    resolveSource(SourceVM.JSON)
-                }
-            }
-            JSONSchemaRadioButton.addItemListener { event ->
-                if (event.stateChange == ItemEvent.SELECTED) {
-                    resolveSource(SourceVM.JSON_SCHEMA)
-                }
-            }
-            // TODO: disable when Json Schema support will be added
-            sourcePanel.isVisible = false
-        }
-    }
-
     private fun bindLanguage(generatorVew: GeneratorView) {
         with(generatorVew) {
-            javaRadioButton.addItemListener { event ->
-                if (event.stateChange == ItemEvent.SELECTED) {
-                    resolveLanguage(LanguageVM.JAVA)
-                    bindFrameworksAndProperties(generatorVew)
-                }
-            }
             kotlinRadioButton.addItemListener { event ->
                 if (event.stateChange == ItemEvent.SELECTED) {
-                    resolveLanguage(LanguageVM.KOTLIN)
+                    resolveLanguage()
                     bindFrameworksAndProperties(generatorVew)
                 }
             }
@@ -92,18 +69,18 @@ internal class GeneratorViewBinder(
         }
     }
 
-    private fun resolveSource(key: String) {
+    private fun resolveSource() {
         with(properties) {
             this?.selectedSource = this?.sources?.firstOrNull {
-                it.propertyName == key
+                it.propertyName == SourceVM.JSON
             }
         }
     }
 
-    private fun resolveLanguage(key: String) {
+    private fun resolveLanguage() {
         with(properties?.selectedSource) {
             this?.selectedLanguage = this?.languages?.firstOrNull {
-                it.propertyName == key
+                it.propertyName == LanguageVM.KOTLIN
             }
         }
     }

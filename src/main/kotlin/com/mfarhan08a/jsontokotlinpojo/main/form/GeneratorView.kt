@@ -13,11 +13,7 @@ class GeneratorView {
     lateinit var rewriteExistingClassesCheckBox: JCheckBox
     lateinit var className: JTextField
     lateinit var jsonAreaScrollView: JScrollPane
-    lateinit var JSONRadioButton: JRadioButton
-    lateinit var JSONSchemaRadioButton: JRadioButton
-    lateinit var javaRadioButton: JRadioButton
     lateinit var kotlinRadioButton: JRadioButton
-    lateinit var sourcePanel: JPanel
     lateinit var languagePanel: JPanel
     lateinit var frameworkPanel: JPanel
     lateinit var frameworkList: JList<String>
@@ -27,7 +23,6 @@ class GeneratorView {
     lateinit var controlsPanel: JPanel
     lateinit var scrollPropertiesPanel: JScrollPane
     lateinit var useTabsIndentation: JCheckBox
-    lateinit var sourceGroup: ButtonGroup
     lateinit var languageGroup: ButtonGroup
 
     private fun createUIComponents() {

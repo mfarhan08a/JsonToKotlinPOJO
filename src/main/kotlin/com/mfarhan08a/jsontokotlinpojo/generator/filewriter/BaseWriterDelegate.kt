@@ -5,13 +5,13 @@ import com.mfarhan08a.jsontokotlinpojo.core.delegates.PreWriterDelegate
 import com.mfarhan08a.jsontokotlinpojo.core.errors.FileWriteException
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.ProjectModel
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.PostProcessorFactory
+import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import java.io.IOException
 
 internal abstract class BaseWriterDelegate(
     private val messageDelegate: MessageDelegate,
-    private val factory: PostProcessorFactory,
+    private val postProcessor: KotlinDataClassPostProcessor,
     private val fileWriterDelegate: FileWriter,
     private val preWriterDelegate: PreWriterDelegate
 ) {
@@ -25,8 +25,7 @@ internal abstract class BaseWriterDelegate(
     protected fun prepareClass(
         classItem: ClassItem,
         generationModel: GenerationModel
-    ) = factory.createPostProcessor(generationModel)
-        .proceed(classItem, generationModel)
+    ) = postProcessor.proceed(classItem, generationModel)
 
     protected fun writeFile(
         classItemBody: String,
@@ -34,7 +33,7 @@ internal abstract class BaseWriterDelegate(
         generationModel: GenerationModel,
         projectModel: ProjectModel
     ) {
-        val fileName = "$className${if (generationModel.useKotlin) FILE_KOTLIN else FILE_JAVA}"
+        val fileName = "$className$FILE_KOTLIN"
         try {
             if (projectModel.directory.findFile(fileName) != null) {
                 if (generationModel.rewriteClasses) {
@@ -57,4 +56,3 @@ internal abstract class BaseWriterDelegate(
 }
 
 const val FILE_KOTLIN = ".kt"
-const val FILE_JAVA = ".java"

@@ -10,7 +10,7 @@ internal class FileDelegateFactory(
 ) {
 
     fun createFileWriter(generationModel: GenerationModel): BaseWriterDelegate =
-        if (generationModel.useKotlin && generationModel.useKotlinSingleDataClass) {
+        if (generationModel.useKotlinSingleDataClass) {
             kotlinSingleFileWriterDelegate
         } else {
             commonFileWriterDelegate

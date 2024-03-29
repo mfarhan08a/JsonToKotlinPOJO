@@ -29,11 +29,7 @@ internal class ViewStateManager(
     }
 
     private fun applyLanguage(source: SourceVM, model: GenerationModel) {
-        source.selectedLanguage = if (model.useKotlin) {
-            source.languages.filterIsInstance<LanguageVM.Kotlin>().firstOrNull()
-        } else {
-            source.languages.filterIsInstance<LanguageVM.Java>().firstOrNull()
-        }
+        source.selectedLanguage = source.languages.filterIsInstance<LanguageVM.Kotlin>().firstOrNull()
         source.selectedLanguage?.let {
             applyFrameworks(it, model)
         }
@@ -49,22 +45,12 @@ internal class ViewStateManager(
 
     private fun applyProperties(framework: FrameworkVW, model: GenerationModel) {
         with(framework.properties) {
-            filterIsInstance<AdditionalPropertiesVM.UseSetters>().firstOrNull()?.selected =
-                model.useSetters
-            filterIsInstance<AdditionalPropertiesVM.UseGetters>().firstOrNull()?.selected =
-                model.useGetters
-            filterIsInstance<AdditionalPropertiesVM.UseToString>().firstOrNull()?.selected =
-                model.useStrings
-            filterIsInstance<AdditionalPropertiesVM.UseJavaPrimitives>().firstOrNull()?.selected =
-                model.javaPrimitives
             filterIsInstance<AdditionalPropertiesVM.UseKotlinParcelable>().firstOrNull()?.selected =
                 model.useKotlinParcelable
             filterIsInstance<AdditionalPropertiesVM.UseKotlinSingleDataClass>().firstOrNull()?.selected =
                 model.useKotlinSingleDataClass
             filterIsInstance<AdditionalPropertiesVM.UseKotlinNullableFields>().firstOrNull()?.selected =
                 model.kotlinNullableFields
-            filterIsInstance<AdditionalPropertiesVM.UseLombokValue>().firstOrNull()?.selected =
-                model.useLombokValue
             filterIsInstance<AdditionalPropertiesVM.UseMoshiAdapterAnnotation>().firstOrNull()?.selected =
                 model.useMoshiAdapter
             filterIsInstance<AdditionalPropertiesVM.UseKotlinDataClasses>().firstOrNull()?.selected =

@@ -7,18 +7,6 @@ internal class ClassField(
     var className: String? = null,
     var classField: ClassField? = null
 ) {
-
-    fun getJavaItem(primitive: Boolean = true): String? {
-        return if (null != classField) {
-            String.format(
-                ArrayItemsTemplate.LIST_OF_ITEM,
-                classField?.getJavaItem(primitive = false)
-            )
-        } else {
-            className ?: if (primitive) classEnum?.primitive else classEnum?.boxed
-        }
-    }
-
     fun getKotlinItem(): String? {
         return if (null != classField) {
             String.format(

@@ -6,18 +6,17 @@ import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.ProjectModel
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.BaseWriterDelegate
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.FileWriter
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.PostProcessorFactory
 import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.templates.ClassTemplate
 
 internal class KotlinSingleFileWriterDelegate(
     messageDelegate: MessageDelegate,
-    factory: PostProcessorFactory,
+    postProcessor: KotlinDataClassPostProcessor,
     fileWriterDelegate: FileWriter,
     preWriterDelegate: PreWriterDelegate,
     private val kotlinDataClassPostProcessor: KotlinDataClassPostProcessor
-) : BaseWriterDelegate(messageDelegate, factory, fileWriterDelegate, preWriterDelegate) {
+) : BaseWriterDelegate(messageDelegate, postProcessor, fileWriterDelegate, preWriterDelegate) {
 
     override fun writeFiles(
         set: Set<ClassItem>,
