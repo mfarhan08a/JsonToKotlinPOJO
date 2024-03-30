@@ -27,6 +27,7 @@ dependencies {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
+  pluginName.set("JsonToKotlinPOJO")
   localPath.set("D:\\GM\\Android Studio")
   type.set("AI") // Target IDE Platform
   plugins.set(listOf("Kotlin", "android"))
@@ -45,6 +46,7 @@ tasks {
   patchPluginXml {
     sinceBuild.set("222")
     untilBuild.set("232.*")
+    changeNotes.set("This is the first version of this plugin")
   }
 
   signPlugin {

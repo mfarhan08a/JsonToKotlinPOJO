@@ -25,7 +25,7 @@ internal class GenerationDelegateImpl(
     ) {
         try {
             classCreator.generateFiles(generationModel, projectModel)
-            messageDelegate.showSuccessMessage()
+            messageDelegate.showSuccessMessage(projectModel.project)
         } catch (e: CustomPluginException) {
             messageDelegate.onPluginExceptionHandled(e)
         } finally {

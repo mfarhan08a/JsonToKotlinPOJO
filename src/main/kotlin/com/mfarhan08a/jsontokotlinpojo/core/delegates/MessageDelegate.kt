@@ -1,5 +1,7 @@
 package com.mfarhan08a.jsontokotlinpojo.core.delegates
 
+import com.intellij.notification.NotificationDisplayType
+import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
@@ -11,9 +13,9 @@ import com.mfarhan08a.jsontokotlinpojo.core.errors.CustomPluginException
 interface MessageDelegate {
     fun onPluginExceptionHandled(exception: CustomPluginException)
 
-    fun logEventMessage(message: String)
+    fun logEventMessage(message: String, project: Project)
 
-    fun showSuccessMessage()
+    fun showSuccessMessage(project: Project)
 }
 
 internal class MessageDelegateImpl : MessageDelegate {
@@ -21,28 +23,36 @@ internal class MessageDelegateImpl : MessageDelegate {
         showMessage(exception.message, exception.header)
     }
 
-    override fun logEventMessage(message: String) {
-        sendNotification(message, NotificationType.WARNING)
+    override fun logEventMessage(message: String, project: Project) {
+        sendNotification(message, NotificationType.WARNING, project)
     }
 
-    override fun showSuccessMessage() {
-        sendNotification(TITLE_SUCCESS, NotificationType.INFORMATION)
+    override fun showSuccessMessage(project: Project) {
+        sendNotification(TITLE_SUCCESS, NotificationType.INFORMATION, project)
     }
 
     private fun sendNotification(
         message: String,
-        type: NotificationType
-    ) = ApplicationManager.getApplication().invokeLater {
-        showMessage(message, type, ProjectManager.getInstance().openProjects.first())
+        type: NotificationType,
+        project: Project
+    ) {
+        showMessage(message, type, project)
     }
 
     private fun showMessage(
         message: String,
         type: NotificationType,
         project: Project
-    ) = NotificationGroupManager.getInstance().getNotificationGroup(GROUP_ID)
-        .createNotification(message, type)
-        .notify(project)
+    ) {
+        @Suppress("DEPRECATION")
+        val notificationGroup = NotificationGroup(
+            displayId = GROUP_ID,
+            displayType = NotificationDisplayType.BALLOON,
+            isLogByDefault = true
+        )
+        notificationGroup.createNotification(message, type)
+            .notify(project)
+    }
 
     private fun showMessage(
         message: String?,

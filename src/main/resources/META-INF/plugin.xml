@@ -7,18 +7,11 @@
     <description>Convert JSON to Kotlin POJO: Kotlin Serialization support</description>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>org.jetbrains.android</depends>
-    <depends>com.intellij.modules.androidstudio</depends>
+<!--    <depends>org.jetbrains.android</depends>-->
+<!--    <depends>com.intellij.modules.androidstudio</depends>-->
 
 
     <actions>
-        <action id="com.mfarhan08a.jsontokotlinpojo.HelloWorldAction"
-                class="com.mfarhan08a.jsontokotlinpojo.HelloWorldAction"
-                text="HelloWorld"
-                description="Generate Kotlin POJO from JSON">
-            <add-to-group group-id="NewGroup" anchor="last"/>
-        </action>
-
         <action id="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinPOJOAction"
                 class="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinPOJOAction"
                 text="Generate Kotlin POJO From JSON"

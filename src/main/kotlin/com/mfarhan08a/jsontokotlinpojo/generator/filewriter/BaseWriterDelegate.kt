@@ -37,12 +37,12 @@ internal abstract class BaseWriterDelegate(
         try {
             if (projectModel.directory.findFile(fileName) != null) {
                 if (generationModel.rewriteClasses) {
-                    messageDelegate.logEventMessage("updated $fileName")
+                    messageDelegate.logEventMessage("updated $fileName", projectModel.project)
                 } else {
-                    messageDelegate.logEventMessage("skipped $fileName")
+                    messageDelegate.logEventMessage("skipped $fileName", projectModel.project)
                 }
             } else {
-                messageDelegate.logEventMessage("created $fileName")
+                messageDelegate.logEventMessage("created $fileName", projectModel.project)
             }
             fileWriterDelegate.writeToFile(
                 preWriterDelegate.updateFileBody(generationModel, classItemBody), fileName,
