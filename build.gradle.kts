@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.21"
     id("org.jetbrains.intellij") version "1.13.3"
     id("maven-publish")
+    id("com.xcporter.metaview") version "0.0.5"
 }
 
 group = "com.mfarhan08a"
@@ -47,22 +48,27 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("232.*")
+        untilBuild.set("233.*")
         changeNotes.set("This is the first version of this plugin")
-    }
-
-    signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-    }
-
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
     }
 
     buildSearchableOptions {
         enabled = false
+    }
+
+    generateUml {
+        classTree {
+            outputFile = "core.md"
+            target = file(projectDir.path + "/src/main/kotlin/com/mfarhan08a/jsontokotlinpojo/core")
+        }
+        classTree {
+            outputFile = "generator.md"
+            target = file(projectDir.path + "/src/main/kotlin/com/mfarhan08a/jsontokotlinpojo/generator")
+        }
+        classTree {
+            outputFile = "main.md"
+            target = file(projectDir.path + "/src/main/kotlin/com/mfarhan08a/jsontokotlinpojo/main")
+        }
     }
 }
 

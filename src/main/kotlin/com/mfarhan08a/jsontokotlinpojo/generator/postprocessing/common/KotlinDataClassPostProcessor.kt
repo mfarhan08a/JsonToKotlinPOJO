@@ -4,7 +4,6 @@ import com.mfarhan08a.jsontokotlinpojo.core.models.FieldModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.FrameworkVW.*
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.BasePostProcessor
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.utils.MoshiAnnotationsProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.annotations.KotlinAnnotations
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.templates.ClassTemplate
@@ -17,7 +16,6 @@ import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 internal class KotlinDataClassPostProcessor(
     generateHelper: ClassGenerateHelper,
     classTemplateHelper: ClassTemplateHelper,
-    private val moshiAnnotationsProcessor: MoshiAnnotationsProcessor
 ) : BasePostProcessor(generateHelper, classTemplateHelper) {
 
     override fun proceedClassImports(
@@ -50,7 +48,7 @@ internal class KotlinDataClassPostProcessor(
                         generationModel,
                         FieldModel(
                             classType = classFields[objectName]?.getKotlinItem(),
-                            annotation = if(objectName == generateHelper.formatClassField(objectName)) null else classItem.annotation,
+                            annotation = if (objectName == generateHelper.formatClassField(objectName)) null else classItem.annotation,
                             fieldName = objectName,
                             fieldNameFormatted = generateHelper.formatClassField(objectName)
                         )
@@ -98,35 +96,6 @@ internal class KotlinDataClassPostProcessor(
                 ImportsTemplate.Gson.imports
             )
         }
-
-        is LoganSquare -> {
-            generateHelper.setAnnotations(
-                classItem,
-                KotlinAnnotations.LoganSquare.classAnnotation,
-                KotlinAnnotations.LoganSquare.annotation,
-                ImportsTemplate.LoganSquare.imports
-            )
-        }
-
-        is Jackson -> {
-            generateHelper.setAnnotations(
-                classItem,
-                KotlinAnnotations.Jackson.classAnnotation,
-                KotlinAnnotations.Jackson.annotation,
-                ImportsTemplate.Jackson.imports
-            )
-        }
-
-        is FastJson -> {
-            generateHelper.setAnnotations(
-                classItem,
-                KotlinAnnotations.FastJson.classAnnotation,
-                KotlinAnnotations.FastJson.annotation,
-                ImportsTemplate.FastJson.imports
-            )
-        }
-
-        is Moshi -> moshiAnnotationsProcessor.applyAnnotations(generationModel, classItem)
 
         is KotlinSerialization -> {
             generateHelper.setAnnotations(

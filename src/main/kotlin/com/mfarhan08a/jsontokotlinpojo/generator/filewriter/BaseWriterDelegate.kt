@@ -33,7 +33,7 @@ internal abstract class BaseWriterDelegate(
         generationModel: GenerationModel,
         projectModel: ProjectModel
     ) {
-        val fileName = "$className$FILE_KOTLIN"
+        val fileName = "$className.kt"
         try {
             if (projectModel.directory.findFile(fileName) != null) {
                 if (generationModel.rewriteClasses) {
@@ -54,5 +54,3 @@ internal abstract class BaseWriterDelegate(
         }
     }
 }
-
-const val FILE_KOTLIN = ".kt"

@@ -15,7 +15,6 @@ import com.mfarhan08a.jsontokotlinpojo.generator.parser.InputDataParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonArrayParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonObjectParser
 import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.utils.MoshiAnnotationsProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassGenerateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ProcessingModelResolver
@@ -102,13 +101,8 @@ val appModule = module {
     }
 
     single {
-        KotlinDataClassPostProcessor(get(), get(), get())
+        KotlinDataClassPostProcessor(get(), get())
     }
-
-    single {
-        MoshiAnnotationsProcessor(get())
-    }
-
 
     single {
         ClassTemplateHelper()

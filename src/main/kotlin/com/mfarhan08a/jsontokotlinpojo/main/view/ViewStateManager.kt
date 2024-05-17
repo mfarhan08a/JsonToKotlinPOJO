@@ -51,8 +51,6 @@ internal class ViewStateManager(
                 model.useKotlinSingleDataClass
             filterIsInstance<AdditionalPropertiesVM.UseKotlinNullableFields>().firstOrNull()?.selected =
                 model.kotlinNullableFields
-            filterIsInstance<AdditionalPropertiesVM.UseMoshiAdapterAnnotation>().firstOrNull()?.selected =
-                model.useMoshiAdapter
             filterIsInstance<AdditionalPropertiesVM.UseKotlinDataClasses>().firstOrNull()?.selected =
                 model.useKotlinDataClass
         }

@@ -27,7 +27,7 @@ internal class PropertiesFactory {
     private fun createJsonLanguages() = listOf(
         Kotlin(
             frameworks = listOf(
-                None(
+                KotlinSerialization(
                     properties = listOf(
                         UseKotlinDataClasses(selected = true),
                         UseKotlinSingleDataClass(selected = true),
@@ -43,7 +43,7 @@ internal class PropertiesFactory {
                         UseKotlinParcelable()
                     )
                 ),
-                Jackson(
+                None(
                     properties = listOf(
                         UseKotlinDataClasses(selected = true),
                         UseKotlinSingleDataClass(selected = true),
@@ -51,39 +51,6 @@ internal class PropertiesFactory {
                         UseKotlinParcelable()
                     )
                 ),
-                LoganSquare(
-                    properties = listOf(
-                        UseKotlinDataClasses(selected = true),
-                        UseKotlinSingleDataClass(selected = true),
-                        UseKotlinNullableFields(selected = true),
-                        UseKotlinParcelable()
-                    )
-                ),
-                Moshi(
-                    properties = listOf(
-                        UseKotlinDataClasses(selected = true),
-                        UseKotlinSingleDataClass(selected = true),
-                        UseKotlinNullableFields(selected = true),
-                        UseMoshiAdapterAnnotation(),
-                        UseKotlinParcelable()
-                    )
-                ),
-                FastJson(
-                    properties = listOf(
-                        UseKotlinDataClasses(selected = true),
-                        UseKotlinSingleDataClass(selected = true),
-                        UseKotlinNullableFields(selected = true),
-                        UseKotlinParcelable()
-                    )
-                ),
-                KotlinSerialization(
-                    properties = listOf(
-                        UseKotlinDataClasses(selected = true),
-                        UseKotlinSingleDataClass(selected = true),
-                        UseKotlinNullableFields(selected = true),
-                        UseKotlinParcelable()
-                    )
-                )
             )
         )
     )

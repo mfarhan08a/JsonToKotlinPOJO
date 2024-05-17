@@ -1,13 +1,12 @@
 package com.mfarhan08a.jsontokotlinpojo.main.view
 
-import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.LanguageVM
-import com.mfarhan08a.jsontokotlinpojo.main.form.GeneratorView
 import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_DATA_CLASSES
 import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_NULLABLE_FIELDS
 import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_PARCELABLE
 import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_SINGLE_DATA_CLASS
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.MOSHI_ADAPTER
+import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
+import com.mfarhan08a.jsontokotlinpojo.core.models.LanguageVM
+import com.mfarhan08a.jsontokotlinpojo.main.form.GeneratorView
 
 internal class ViewModelMapper(
     private val generatorViewBinder: GeneratorViewBinder
@@ -23,7 +22,6 @@ internal class ViewModelMapper(
             useKotlinSingleDataClass = resolveCheckBox(KOTLIN_SINGLE_DATA_CLASS),
             kotlinNullableFields = resolveCheckBox(KOTLIN_NULLABLE_FIELDS),
             useTabsIndentation = useTabsIndentation.isSelected,
-            useMoshiAdapter = resolveCheckBox(MOSHI_ADAPTER),
             useKotlinDataClass = resolveCheckBox(KOTLIN_DATA_CLASSES)
         )
     }
