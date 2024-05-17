@@ -14,7 +14,7 @@ import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.common.KotlinSingleF
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.InputDataParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonArrayParser
 import com.mfarhan08a.jsontokotlinpojo.generator.parser.JsonObjectParser
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
+import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassGenerateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ProcessingModelResolver

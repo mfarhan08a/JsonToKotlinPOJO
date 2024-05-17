@@ -1,9 +1,8 @@
-package com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common
+package com.mfarhan08a.jsontokotlinpojo.generator.postprocessing
 
 import com.mfarhan08a.jsontokotlinpojo.core.models.FieldModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.FrameworkVW.*
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.BasePostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.annotations.KotlinAnnotations
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.templates.ClassTemplate
@@ -14,11 +13,18 @@ import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassGenerateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 
 internal class KotlinDataClassPostProcessor(
-    generateHelper: ClassGenerateHelper,
-    classTemplateHelper: ClassTemplateHelper,
-) : BasePostProcessor(generateHelper, classTemplateHelper) {
+    private val generateHelper: ClassGenerateHelper,
+    private val classTemplateHelper: ClassTemplateHelper
+) {
+    fun proceed(
+        classItem: ClassItem,
+        generationModel: GenerationModel
+    ): String {
+        applyAnnotations(generationModel, classItem)
+        return proceedClass(classItem, generationModel)
+    }
 
-    override fun proceedClassImports(
+    fun proceedClassImports(
         imports: HashSet<String>,
         generationModel: GenerationModel
     ): StringBuilder {
@@ -35,7 +41,7 @@ internal class KotlinDataClassPostProcessor(
         return importsBuilder
     }
 
-    override fun proceedClassBody(
+    private fun proceedClassBody(
         classItem: ClassItem,
         generationModel: GenerationModel
     ): String {
@@ -73,7 +79,7 @@ internal class KotlinDataClassPostProcessor(
         return classBodyBuilder.toString()
     }
 
-    override fun createClassItemText(
+    fun createClassItemText(
         packagePath: String?,
         imports: String?,
         classTemplate: String?
@@ -84,7 +90,7 @@ internal class KotlinDataClassPostProcessor(
             classTemplate
         )
 
-    override fun applyAnnotations(
+    fun applyAnnotations(
         generationModel: GenerationModel,
         classItem: ClassItem
     ) = when (generationModel.annotationEnum) {
@@ -111,7 +117,7 @@ internal class KotlinDataClassPostProcessor(
         }
     }
 
-    override fun createClassTemplate(
+    private fun createClassTemplate(
         classItem: ClassItem,
         classBody: String?,
         generationModel: GenerationModel
@@ -120,4 +126,20 @@ internal class KotlinDataClassPostProcessor(
         classBody,
         generationModel
     )
+
+    private fun proceedClass(
+        classItem: ClassItem,
+        generationModel: GenerationModel
+    ): String {
+        val classBody = generateHelper.updateClassBody(
+            proceedClassBody(classItem, generationModel)
+        )
+        val classTemplate = createClassTemplate(classItem, classBody, generationModel)
+        val importsBuilder = proceedClassImports(classItem.classImports, generationModel)
+        return createClassItemText(
+            classItem.packagePath,
+            importsBuilder.toString(),
+            classTemplate
+        )
+    }
 }

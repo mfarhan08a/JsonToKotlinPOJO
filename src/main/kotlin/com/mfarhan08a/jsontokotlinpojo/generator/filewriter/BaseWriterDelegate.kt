@@ -5,7 +5,7 @@ import com.mfarhan08a.jsontokotlinpojo.core.delegates.PreWriterDelegate
 import com.mfarhan08a.jsontokotlinpojo.core.errors.FileWriteException
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.ProjectModel
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
+import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import java.io.IOException
 

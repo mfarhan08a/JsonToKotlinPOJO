@@ -6,7 +6,7 @@ import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.core.models.ProjectModel
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.BaseWriterDelegate
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.FileWriter
-import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.common.KotlinDataClassPostProcessor
+import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.KotlinDataClassPostProcessor
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.templates.ClassTemplate
 
