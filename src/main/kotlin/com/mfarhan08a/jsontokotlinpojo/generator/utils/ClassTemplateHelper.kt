@@ -54,29 +54,6 @@ internal class ClassTemplateHelper {
         }
     }
 
-    fun createClassItem(
-        packagePath: String?,
-        imports: String?,
-        body: String?
-    ) = if (packagePath?.isNotEmpty() == true) {
-        if (!imports.isNullOrEmpty()) {
-            String.format(
-                ClassTemplate.CLASS_ROOT_IMPORTS,
-                packagePath,
-                imports,
-                body
-            )
-        } else {
-            String.format(
-                ClassTemplate.CLASS_ROOT,
-                packagePath,
-                body
-            )
-        }
-    } else {
-        String.format(ClassTemplate.CLASS_ROOT_NO_PACKAGE, body)
-    }
-
     fun createClassItemWithoutSemicolon(
         packagePath: String?,
         imports: String?,

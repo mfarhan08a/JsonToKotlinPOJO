@@ -1,11 +1,11 @@
 package com.mfarhan08a.jsontokotlinpojo.main.view
 
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_DATA_CLASSES
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_NULLABLE_FIELDS
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_PARCELABLE
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.Companion.KOTLIN_SINGLE_DATA_CLASS
+import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalProperties.Companion.KOTLIN_DATA_CLASSES
+import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalProperties.Companion.KOTLIN_NULLABLE_FIELDS
+import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalProperties.Companion.KOTLIN_PARCELABLE
+import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalProperties.Companion.KOTLIN_SINGLE_DATA_CLASS
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.LanguageVM
+import com.mfarhan08a.jsontokotlinpojo.core.models.Language
 import com.mfarhan08a.jsontokotlinpojo.main.form.GeneratorView
 
 internal class ViewModelMapper(
@@ -37,6 +37,6 @@ internal class ViewModelMapper(
     }
 
     private fun isKotlinSelected() = with(generatorViewBinder.properties) {
-        this?.selectedSource?.selectedLanguage is LanguageVM.Kotlin
+        this?.selectedSource?.selectedLanguage is Language.Kotlin
     }
 }

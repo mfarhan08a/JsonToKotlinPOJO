@@ -1,10 +1,10 @@
 package com.mfarhan08a.jsontokotlinpojo.main.view
 
 import com.mfarhan08a.jsontokotlinpojo.core.models.ControlsModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalPropertiesVM.*
-import com.mfarhan08a.jsontokotlinpojo.core.models.FrameworkVW.*
-import com.mfarhan08a.jsontokotlinpojo.core.models.SourceVM.*
-import com.mfarhan08a.jsontokotlinpojo.core.models.LanguageVM.*
+import com.mfarhan08a.jsontokotlinpojo.core.models.AdditionalProperties.*
+import com.mfarhan08a.jsontokotlinpojo.core.models.Framework.*
+import com.mfarhan08a.jsontokotlinpojo.core.models.Source.*
+import com.mfarhan08a.jsontokotlinpojo.core.models.Language.*
 
 internal class PropertiesFactory {
 

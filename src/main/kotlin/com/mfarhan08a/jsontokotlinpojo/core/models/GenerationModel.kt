@@ -7,7 +7,7 @@ import com.intellij.psi.PsiDirectory
 data class GenerationModel(
     val rewriteClasses: Boolean,
     val useKotlin: Boolean,
-    val annotationEnum: FrameworkVW,
+    val annotationEnum: Framework,
     val rootClassName: String,
     val content: String?,
     val useKotlinSingleDataClass: Boolean,

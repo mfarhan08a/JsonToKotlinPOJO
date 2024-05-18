@@ -2,55 +2,55 @@ package com.mfarhan08a.jsontokotlinpojo.core.models
 
 
 data class ControlsModel(
-    val sources: List<SourceVM>,
-    var selectedSource: SourceVM? = null
+    val sources: List<Source>,
+    var selectedSource: Source? = null
 )
 
-sealed class SourceVM(
-    val languages: List<LanguageVM>,
-    var selectedLanguage: LanguageVM? = null,
+sealed class Source(
+    val languages: List<Language>,
+    var selectedLanguage: Language? = null,
     val propertyName: String
 ) {
     class Json(
-        languages: List<LanguageVM>,
-        selected: LanguageVM? = null
-    ) : SourceVM(languages, selected, JSON)
+        languages: List<Language>,
+        selected: Language? = null
+    ) : Source(languages, selected, JSON)
 
     companion object {
         const val JSON = "Json"
     }
 }
 
-sealed class LanguageVM(
-    val frameworks: List<FrameworkVW>,
-    var selectedFramework: FrameworkVW? = null,
+sealed class Language(
+    val frameworks: List<Framework>,
+    var selectedFramework: Framework? = null,
     val propertyName: String
 ) {
     class Kotlin(
-        frameworks: List<FrameworkVW>,
-        selected: FrameworkVW? = null
-    ) : LanguageVM(frameworks, selected, KOTLIN)
+        frameworks: List<Framework>,
+        selected: Framework? = null
+    ) : Language(frameworks, selected, KOTLIN)
 
     companion object {
         const val KOTLIN = "Kotlin"
     }
 }
 
-sealed class FrameworkVW(
+sealed class Framework(
     val propertyName: String,
-    val properties: List<AdditionalPropertiesVM>
+    val properties: List<AdditionalProperties>
 ) {
     class KotlinSerialization(
-        properties: List<AdditionalPropertiesVM> = emptyList()
-    ) : FrameworkVW(KOTLIN_SERIALIZATION, properties)
+        properties: List<AdditionalProperties> = emptyList()
+    ) : Framework(KOTLIN_SERIALIZATION, properties)
 
     class Gson(
-        properties: List<AdditionalPropertiesVM> = emptyList()
-    ) : FrameworkVW(GSON, properties)
+        properties: List<AdditionalProperties> = emptyList()
+    ) : Framework(GSON, properties)
 
     class None(
-        properties: List<AdditionalPropertiesVM> = emptyList()
-    ) : FrameworkVW(NONE, properties)
+        properties: List<AdditionalProperties> = emptyList()
+    ) : Framework(NONE, properties)
 
     companion object {
         const val KOTLIN_SERIALIZATION = "Kotlin Serialization"
@@ -59,25 +59,25 @@ sealed class FrameworkVW(
     }
 }
 
-sealed class AdditionalPropertiesVM(
+sealed class AdditionalProperties(
     var selected: Boolean,
     val propertyName: String
 ) {
     class UseKotlinParcelable(
         selected: Boolean = false
-    ) : AdditionalPropertiesVM(selected, KOTLIN_PARCELABLE)
+    ) : AdditionalProperties(selected, KOTLIN_PARCELABLE)
 
     class UseKotlinSingleDataClass(
         selected: Boolean = false
-    ) : AdditionalPropertiesVM(selected, KOTLIN_SINGLE_DATA_CLASS)
+    ) : AdditionalProperties(selected, KOTLIN_SINGLE_DATA_CLASS)
 
     class UseKotlinDataClasses(
         selected: Boolean = false
-    ) : AdditionalPropertiesVM(selected, KOTLIN_DATA_CLASSES)
+    ) : AdditionalProperties(selected, KOTLIN_DATA_CLASSES)
 
     class UseKotlinNullableFields(
         selected: Boolean = false
-    ) : AdditionalPropertiesVM(selected, KOTLIN_NULLABLE_FIELDS)
+    ) : AdditionalProperties(selected, KOTLIN_NULLABLE_FIELDS)
 
     companion object {
         const val KOTLIN_PARCELABLE = "parcelable (Android)"

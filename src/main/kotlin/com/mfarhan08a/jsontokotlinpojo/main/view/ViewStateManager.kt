@@ -21,21 +21,21 @@ internal class ViewStateManager(
     fun restoreState(properties: ControlsModel?) {
         viewStateService.state.model?.let { model ->
             properties?.apply {
-                sources.filterIsInstance<SourceVM.Json>().firstOrNull()?.apply {
+                sources.filterIsInstance<Source.Json>().firstOrNull()?.apply {
                     applyLanguage(this, model)
                 }
             }
         }
     }
 
-    private fun applyLanguage(source: SourceVM, model: GenerationModel) {
-        source.selectedLanguage = source.languages.filterIsInstance<LanguageVM.Kotlin>().firstOrNull()
+    private fun applyLanguage(source: Source, model: GenerationModel) {
+        source.selectedLanguage = source.languages.filterIsInstance<Language.Kotlin>().firstOrNull()
         source.selectedLanguage?.let {
             applyFrameworks(it, model)
         }
     }
 
-    private fun applyFrameworks(language: LanguageVM, model: GenerationModel) {
+    private fun applyFrameworks(language: Language, model: GenerationModel) {
         language.selectedFramework =
             language.frameworks.firstOrNull { it.propertyName == model.annotationEnum.propertyName }
         language.selectedFramework?.let {
@@ -43,15 +43,15 @@ internal class ViewStateManager(
         }
     }
 
-    private fun applyProperties(framework: FrameworkVW, model: GenerationModel) {
+    private fun applyProperties(framework: Framework, model: GenerationModel) {
         with(framework.properties) {
-            filterIsInstance<AdditionalPropertiesVM.UseKotlinParcelable>().firstOrNull()?.selected =
+            filterIsInstance<AdditionalProperties.UseKotlinParcelable>().firstOrNull()?.selected =
                 model.useKotlinParcelable
-            filterIsInstance<AdditionalPropertiesVM.UseKotlinSingleDataClass>().firstOrNull()?.selected =
+            filterIsInstance<AdditionalProperties.UseKotlinSingleDataClass>().firstOrNull()?.selected =
                 model.useKotlinSingleDataClass
-            filterIsInstance<AdditionalPropertiesVM.UseKotlinNullableFields>().firstOrNull()?.selected =
+            filterIsInstance<AdditionalProperties.UseKotlinNullableFields>().firstOrNull()?.selected =
                 model.kotlinNullableFields
-            filterIsInstance<AdditionalPropertiesVM.UseKotlinDataClasses>().firstOrNull()?.selected =
+            filterIsInstance<AdditionalProperties.UseKotlinDataClasses>().firstOrNull()?.selected =
                 model.useKotlinDataClass
         }
     }

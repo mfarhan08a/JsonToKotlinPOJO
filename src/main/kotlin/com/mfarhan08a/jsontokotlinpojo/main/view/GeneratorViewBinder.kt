@@ -1,9 +1,9 @@
 package com.mfarhan08a.jsontokotlinpojo.main.view
 
 import com.mfarhan08a.jsontokotlinpojo.core.models.ControlsModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.FrameworkVW
-import com.mfarhan08a.jsontokotlinpojo.core.models.LanguageVM
-import com.mfarhan08a.jsontokotlinpojo.core.models.SourceVM
+import com.mfarhan08a.jsontokotlinpojo.core.models.Framework
+import com.mfarhan08a.jsontokotlinpojo.core.models.Language
+import com.mfarhan08a.jsontokotlinpojo.core.models.Source
 import com.mfarhan08a.jsontokotlinpojo.main.form.GeneratorView
 import java.awt.event.ItemEvent
 import java.util.*
@@ -65,14 +65,14 @@ internal class GeneratorViewBinder(
                     bindFrameworksAndProperties(generatorVew)
                 }
             }
-            kotlinRadioButton.isSelected = properties?.selectedSource?.selectedLanguage is LanguageVM.Kotlin
+            kotlinRadioButton.isSelected = properties?.selectedSource?.selectedLanguage is Language.Kotlin
         }
     }
 
     private fun resolveSource() {
         with(properties) {
             this?.selectedSource = this?.sources?.firstOrNull {
-                it.propertyName == SourceVM.JSON
+                it.propertyName == Source.JSON
             }
         }
     }
@@ -80,7 +80,7 @@ internal class GeneratorViewBinder(
     private fun resolveLanguage() {
         with(properties?.selectedSource) {
             this?.selectedLanguage = this?.languages?.firstOrNull {
-                it.propertyName == LanguageVM.KOTLIN
+                it.propertyName == Language.KOTLIN
             }
         }
     }
@@ -97,7 +97,7 @@ internal class GeneratorViewBinder(
             )
             selectedIndex = with(properties?.selectedSource?.selectedLanguage) {
                 this?.selectedFramework?.let {
-                    this.frameworks.indexOf(selectedFramework as FrameworkVW)
+                    this.frameworks.indexOf(selectedFramework as Framework)
                 } ?: 0
             }
             addListSelectionListener { selectionEvent ->

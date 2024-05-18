@@ -1,7 +1,7 @@
 package com.mfarhan08a.jsontokotlinpojo.generator.postprocessing
 
 import com.mfarhan08a.jsontokotlinpojo.core.models.FieldModel
-import com.mfarhan08a.jsontokotlinpojo.core.models.FrameworkVW.*
+import com.mfarhan08a.jsontokotlinpojo.core.models.Framework.*
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.annotations.KotlinAnnotations
