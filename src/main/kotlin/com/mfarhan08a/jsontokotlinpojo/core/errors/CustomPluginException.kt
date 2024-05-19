@@ -19,4 +19,4 @@ class PathException :
     )
 
 class WrongClassNameException :
-    CustomPluginException("Wrong class name:", "you should set root class name")
+    CustomPluginException("Wrong class name:", "you should set output file name")

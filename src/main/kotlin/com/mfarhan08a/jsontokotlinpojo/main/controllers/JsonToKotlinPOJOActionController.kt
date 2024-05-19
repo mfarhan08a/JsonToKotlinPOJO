@@ -5,6 +5,7 @@ import com.intellij.openapi.ui.DialogBuilder
 import com.mfarhan08a.jsontokotlinpojo.core.delegates.EnvironmentDelegate
 import com.mfarhan08a.jsontokotlinpojo.core.delegates.MessageDelegate
 import com.mfarhan08a.jsontokotlinpojo.core.errors.CustomPluginException
+import com.mfarhan08a.jsontokotlinpojo.core.errors.WrongClassNameException
 import com.mfarhan08a.jsontokotlinpojo.core.models.GenerationModel
 import com.mfarhan08a.jsontokotlinpojo.generator.GenerationDelegate
 import com.mfarhan08a.jsontokotlinpojo.main.listeners.GuiFormEventListener
@@ -33,9 +34,13 @@ internal class JsonToKotlinPOJOActionController(
             dialogBuilder,
             object : GuiFormEventListener {
                 override fun onJsonDataObtained(model: GenerationModel) {
-                    viewStateService.persistModel(model)
-                    window.dispose()
-                    generationDelegate.runGenerationTask(model, projectModel)
+                    if (model.rootClassName.isBlank()) {
+                        messageDelegate.onPluginExceptionHandled(WrongClassNameException())
+                    } else {
+                        viewStateService.persistModel(model)
+                        window.dispose()
+                        generationDelegate.runGenerationTask(model, projectModel)
+                    }
                 }
             }
         )
