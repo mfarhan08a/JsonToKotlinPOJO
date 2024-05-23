@@ -30,7 +30,7 @@ dependencies {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    pluginName.set("JsonToKotlinPOJO")
+    pluginName.set("JsonToKotlinClass")
     localPath.set("D:\\GM\\Android Studio")
     type.set("AI")
     plugins.set(listOf("Kotlin", "android"))

@@ -12,7 +12,7 @@ import com.mfarhan08a.jsontokotlinpojo.main.listeners.GuiFormEventListener
 import com.mfarhan08a.jsontokotlinpojo.main.persistense.ViewStateService
 import com.mfarhan08a.jsontokotlinpojo.main.view.GeneratorViewFactory
 
-internal class JsonToKotlinPOJOActionController(
+internal class JsonToKotlinClassActionController(
     private val environmentDelegate: EnvironmentDelegate,
     private val messageDelegate: MessageDelegate,
     private val generatorViewFactory: GeneratorViewFactory,

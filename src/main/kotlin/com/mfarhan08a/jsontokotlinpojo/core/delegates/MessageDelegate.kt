@@ -61,7 +61,7 @@ internal class MessageDelegateImpl : MessageDelegate {
 
     companion object {
         private const val TITLE_OK = "OK"
-        private const val TITLE_SUCCESS = "POJO generation: Success"
-        private const val GROUP_ID = "KotlinPOJO Generator"
+        private const val TITLE_SUCCESS = "Kotlin Class generation: Success"
+        private const val GROUP_ID = "KotlinClass Generator"
     }
 }

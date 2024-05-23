@@ -4,7 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mfarhan08a.jsontokotlinpojo.PluginApplication
 
-class JsonToKotlinPOJOAction : AnAction() {
+class JsonToKotlinClassAction : AnAction() {
     override fun actionPerformed(event: AnActionEvent) {
         return PluginApplication.actionPerformed(event)
     }

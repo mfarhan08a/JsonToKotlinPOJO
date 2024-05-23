@@ -1,10 +1,10 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.mfarhan08a.JsonToKotlinPOJO</id>
-    <name>Json To Kotlin POJO</name>
+    <id>com.mfarhan08a.JsonToKotlinClass</id>
+    <name>Json To Kotlin Class</name>
     <vendor email="mfarhan08a@gmail.com">mfarhan08a</vendor>
 
-    <description>Convert JSON to Kotlin POJO: Kotlin Serialization support</description>
+    <description>Convert JSON to Kotlin Class: Kotlin Serialization support</description>
 
     <depends>com.intellij.modules.platform</depends>
 <!--    <depends>org.jetbrains.android</depends>-->
@@ -12,10 +12,10 @@
 
 
     <actions>
-        <action id="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinPOJOAction"
-                class="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinPOJOAction"
-                text="Generate Kotlin POJO From JSON"
-                description="Generate Kotlin POJO from JSON">
+        <action id="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinClassAction"
+                class="com.mfarhan08a.jsontokotlinpojo.main.action.JsonToKotlinClassAction"
+                text="Generate Kotlin Class From JSON"
+                description="Generate Kotlin Class from JSON">
             <add-to-group group-id="NewGroup" anchor="last"/>
         </action>
     </actions>

@@ -5,7 +5,7 @@ import com.mfarhan08a.jsontokotlinpojo.core.models.ProjectModel
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.FileDelegateFactory
 
 internal class ClassCreator(
-    private val jsonToKotlinPOJOGenerator: JsonToKotlinPOJOGenerator,
+    private val jsonToKotlinClassGenerator: JsonToKotlinClassGenerator,
     private val fileWriteFactory: FileDelegateFactory
 ) {
 
@@ -15,7 +15,7 @@ internal class ClassCreator(
     ) = fileWriteFactory.createFileWriter(
         generationModel
     ).writeFiles(
-        jsonToKotlinPOJOGenerator.generate(generationModel),
+        jsonToKotlinClassGenerator.generate(generationModel),
         generationModel,
         projectModel
     )

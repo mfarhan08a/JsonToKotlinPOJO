@@ -5,7 +5,7 @@ import com.mfarhan08a.jsontokotlinpojo.generator.parser.InputDataParser
 import com.mfarhan08a.jsontokotlinpojo.generator.properties.ClassItem
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ProcessingModelResolver
 
-internal class JsonToKotlinPOJOGenerator(
+internal class JsonToKotlinClassGenerator(
     private val processor: InputDataParser,
     private val processingModelResolver: ProcessingModelResolver
 ) {

@@ -6,7 +6,7 @@ import com.mfarhan08a.jsontokotlinpojo.core.delegates.MessageDelegateImpl
 import com.mfarhan08a.jsontokotlinpojo.generator.ClassCreator
 import com.mfarhan08a.jsontokotlinpojo.generator.GenerationDelegate
 import com.mfarhan08a.jsontokotlinpojo.generator.GenerationDelegateImpl
-import com.mfarhan08a.jsontokotlinpojo.generator.JsonToKotlinPOJOGenerator
+import com.mfarhan08a.jsontokotlinpojo.generator.JsonToKotlinClassGenerator
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.FileDelegateFactory
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.FileWriter
 import com.mfarhan08a.jsontokotlinpojo.generator.filewriter.common.CommonFileWriterDelegate
@@ -18,7 +18,7 @@ import com.mfarhan08a.jsontokotlinpojo.generator.postprocessing.KotlinDataClassP
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassGenerateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ClassTemplateHelper
 import com.mfarhan08a.jsontokotlinpojo.generator.utils.ProcessingModelResolver
-import com.mfarhan08a.jsontokotlinpojo.main.controllers.JsonToKotlinPOJOActionController
+import com.mfarhan08a.jsontokotlinpojo.main.controllers.JsonToKotlinClassActionController
 import com.mfarhan08a.jsontokotlinpojo.main.persistense.ViewStateService
 import com.mfarhan08a.jsontokotlinpojo.main.view.GeneratorViewBinder
 import com.mfarhan08a.jsontokotlinpojo.main.view.GeneratorViewFactory
@@ -31,7 +31,7 @@ val appModule = module {
 
     //app
     single {
-        JsonToKotlinPOJOActionController(get(), get(), get(), get(), get())
+        JsonToKotlinClassActionController(get(), get(), get(), get(), get())
     }
 
     single {
@@ -109,7 +109,7 @@ val appModule = module {
     }
 
     single {
-        JsonToKotlinPOJOGenerator(get(), get())
+        JsonToKotlinClassGenerator(get(), get())
     }
 
     single {
