@@ -15,7 +15,7 @@ class JSONStructureException :
 class PathException :
     CustomPluginException(
         "No directory was selected:",
-        "You should choose directory for POJO files, before call running this tools"
+        "You should choose directory for kotlin files, before call running this tools"
     )
 
 class WrongClassNameException :
